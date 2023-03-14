@@ -39,6 +39,7 @@ namespace Kalkulator
         private void button16_Click(object sender, EventArgs e)
         {
             textBox2.Text = "";
+            textBox1.Text = "";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -78,7 +79,7 @@ namespace Kalkulator
 
         private void button17_Click(object sender, EventArgs e)
         {
-            textBox2.Text = textBox2.Text + ",";
+            textBox2.Text = textBox2.Text + ".";
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -113,17 +114,16 @@ namespace Kalkulator
 
         private void button18_Click(object sender, EventArgs e)
         {
-            string pattern = "^(\\d+(,\\d+)?)(\\s*[\\+\\-\\*\\/]\\s*\\d+(,\\d+)?)*$";
+            string pattern = "^(-?\\d+(.\\d+)?)(\\s*[\\+\\-\\*\\/]\\s*-?\\d+(.\\d+)?)*$";
             Regex rg = new Regex(pattern);
             if (rg.IsMatch(textBox2.Text))
             {
                 DataTable dt = new DataTable();
                 StringBuilder sb = new StringBuilder();
-                textBox1.Text =sb.Append(dt.Compute(textBox2.Text, "")).ToString();
+                textBox1.Text =sb.Append(dt.Compute(textBox2.Text, "").ToString()).ToString();
             }
             else
             {
-
                 MessageBox.Show("Nieprawid³owy wzór");
             }
         }
