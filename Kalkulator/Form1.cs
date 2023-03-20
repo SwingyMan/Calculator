@@ -1,4 +1,4 @@
-using System.Data;
+﻿using System.Data;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -106,12 +106,6 @@ namespace Kalkulator
             else
             { }
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button18_Click(object sender, EventArgs e)
         {
             string pattern = "^(-?\\d+(.\\d+)?)(\\s*[\\+\\-\\*\\/]\\s*-?\\d+(.\\d+)?)*$";
@@ -120,12 +114,24 @@ namespace Kalkulator
             {
                 DataTable dt = new DataTable();
                 StringBuilder sb = new StringBuilder();
-                textBox1.Text =sb.Append(dt.Compute(textBox2.Text, "").ToString()).ToString();
+                try
+                {
+                    textBox1.Text = sb.Append(dt.Compute(textBox2.Text, "")).ToString();
+                }
+                catch (DivideByZeroException)
+                {
+                    textBox1.Text = "∞";
+                }
+                catch(OverflowException)
+                {
+                    MessageBox.Show("Za dużo byś chciał :(");
+                }
             }
             else
             {
-                MessageBox.Show("Nieprawid�owy wz�r");
+                MessageBox.Show("Nieprawidłowy wzór");
             }
         }
+
     }
 }

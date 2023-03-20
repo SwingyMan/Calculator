@@ -64,6 +64,7 @@
             // 
             textBox1.Location = new Point(12, 41);
             textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
             textBox1.Size = new Size(237, 23);
             textBox1.TabIndex = 1;
             // 
@@ -71,6 +72,7 @@
             // 
             textBox2.Location = new Point(12, 12);
             textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
             textBox2.Size = new Size(237, 23);
             textBox2.TabIndex = 2;
             // 
@@ -274,7 +276,6 @@
             MinimizeBox = false;
             Name = "Form1";
             Text = "Kalkulator";
-            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
